@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    background: #fff;
+    width: 300px;
+    padding: 30px;
+    border: 1px solid rgb(196, 186, 186);
+    box-shadow: 0 0 8px rgb(216, 211, 211);
+}
+.nothappy{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    background: #fff;
+    width: 300px;
+    padding: 30px;
+    border: 1px solid rgb(196, 186, 186);
+    box-shadow: 0 0 8px rgb(216, 211, 211);
+}
+.ifield{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    background: #fff;
+    width: 300px;
+    padding: 30px;
+    border: 1px solid rgb(196, 186, 186);
+    box-shadow: 0 0 8px rgb(216, 211, 211);
+}
+.iarea{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    background: #fff;
+    width: 300px;
+    padding: 30px;
+    border: 1px solid rgb(196, 186, 186);
+    box-shadow: 0 0 8px rgb(216, 211, 211);
+
+}
+.fa-user-edit{
+    color: #1a75ff;
+}
+
+.text{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+.data label{
+    font-size: 20px;
+    font-weight: 500;
+}
+.data{
+    
+    margin: 15px 0px;
+}
+.data input{
+    height: 50px;
+    width: 100%;
+    border: 1px solid grey;
+    margin-top: 15px;
+}
+.ans{
+    margin: 15px 0;
+}
+.ans label{
+    font-size: 20px;
+    font-weight: 500;
+
+}
+.ans p{
+    margin: 10px 0;
+    color: grey;
+}
+.option{
+    height: 35px;
+    width: 100%;
+    border: 1px solid grey;
+    margin-top: 15px;
+
+}
+
+.btn{
+    margin: 35px 0;
+}
+.btr, .btl{
+    width: 117px;
+    height: 40px;
+    
+
+}
+.contain{ position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+ padding: 10px;
+    border: 1px solid rgb(143, 135, 135);
+    width: 400px;
+    box-shadow:0 0 5px  rgb(196, 186, 186);
+
+    height: 550px;
+
+}
+
+.d{
+margin-bottom: 30px;
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+
+}
+.d p{
+    font-size: 20px;
+}
+.opt input{
+    margin-bottom: 15px;
+    
+}
+.opt label{
+    font-size: 15px;
+}
+
+.check input{
+    margin-bottom: 15px;
+
+}
+.check label{
+    font-size: 15px;
+}
+#name{
+    font-size: 20px;
+    font-weight: 500;
+}
+.ui input{
+    width: 215px;
+    height: 30px;
+}
+
+.ux label{
+    font-size: 20px;
+
+}
+.ux textarea{
+width: 300px;
+}
+
+.btl{
+    background-color:#1a75ff;
+    border: none;
+    color: white;
+}
+.btr{
+    background: red;
+    border: none;
+    color: white;
+}.op {
+    display: inline-block;
+    background-image: linear-gradient(#F1F1F1 50%, #F9F9F9 50%);
+    background-size: 100% 32px;
+    background-position: left 10px;
+  }
+  

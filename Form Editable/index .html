@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="a.css" />
+
+<body>
+  <div class="hero">
+
+    <div class="contain" >
+
+      <div class="quiz" >
+        <div class="d">
+          <div class="ui">
+            <label for="fname" id="name">First name:</label>
+            <input type="text" id="fname" name="fname">
+          </div>
+          <i class="fas fa-user-edit top "></i>
+        </div>
+      </div>
+        
+        
+        <div class="quiz" >
+          <div class="d">
+            <p id="p1">What is capital of India.</p>
+            <i class="fas fa-user-edit happy"></i>
+          </div>
+          <div class="opt">
+            <input class="re" type="checkbox" id="x" />
+            <label  for="x" id="p"> Delhi</label><br />
+            <input class="re" type="checkbox" id="n" />
+            <label  for="n" id="q"> London</label><br />
+            <input class="re" type="checkbox" id="h" />
+            <label  for="h" id="r"> Sydney</label><br />
+          </div>
+        </div>
+
+        <div class="quiz" >
+          <div class="d">
+            <p id="r4">Please select your gender:</p>
+            <i class="fas fa-user-edit pogo"></i>
+          </div>
+          <div class="check">
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male" id="r1">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female" id="r2">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other" id="r3">Other</label>
+          </div>
+        </div>
+
+      <div class="quiz" >
+        <div class="d">
+          <div class="ux">
+            <label for="w3review" id="a1">Tell me about Yourself:</label><br>
+            <textarea id="w3review" name="w3review" rows="4" cols="50">
+          </textarea>
+          </div>
+          <i class="fas fa-user-edit iquiz "></i>
+        </div>
+      </div>
+      <button class="gf" onclick="valthis()">Submit</button>
+    </div>
+
+<!-- POP UP CARD -->
+
+
+    <div class="big">
+      <div class="container">
+        <div class="text">Edit Question</div>
+        <div class="data">
+          <label for="">Question-:</label>
+          <input id="o" type="text" />
+        </div>
+        <div class="ans">
+          <label for="">Answers</label>
+          <p>Invitee can select one of the Following</p>
+          <input type="text" class="option" id="a" placeholder="Option A" /><br />
+          <input type="text" class="option" id="b" placeholder="Option B" /><br />
+          <input type="text" class="option" id="c" placeholder="Option C" />
+        </div>
+        <div class="btn">
+          <button class="btl bt2">Apply</button>
+          <button class="btr bt1">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="nothappy">
+      <div class="text">Edit Question</div>
+      <div class="data">
+        <label for="">Question-:</label>
+        <input id="w" type="text" />
+      </div>
+      <div class="ans">
+        <label for="">Answers</label>
+        <p>Invitee can select one of the Following</p>
+        <input type="text" class="option" id="j" placeholder="Option A" /><br />
+        <input type="text" class="option" id="k" placeholder="Option B" /><br />
+        <input type="text" class="option" id="l" placeholder="Option C" />
+      </div>
+      <div class="btn">
+        <button class="btl bt3">Apply</button>
+        <button class="btr bt4">Cancel</button>
+      </div>
+    </div>
+
+
+    <div class="ifield">
+      <div class="text">Edit Question</div>
+      <div class="data">
+        <label for="">Field Name</label>
+        <input id="z" type="text" />
+      </div>
+      <div class="btn">
+        <button class="btl bt5">Apply</button>
+        <button class="btr bt6">Cancel</button>
+      </div>
+    </div>
+
+    <div class="iarea">
+      <div class="text">Edit Question</div>
+      <div class="data">
+        <label for="">Text Area Name</label>
+        <input id="i1" type="text" />
+      </div>
+      <div class="btn">
+        <button class="btl bt7">Apply</button>
+        <button class="btr bt8">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+    <script src="b.js"></script>
+    <script>
+     
+     function valthis() {
+var checkBoxes = document.getElementsByClassName( 're' );
+var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) {
+        if ( checkBoxes[i].checked ) {
+            isChecked = true;
+        };
+    };
+    if ( !isChecked ) {
+            alert( 'Please, check at least one checkbox!' );
+        }   
+}
+</script>
+    </script>
+    
+
+</body>
+
+</html>
