@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/1f280ffe0a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.tiny.cloud/1/ivjf1i749q2bapl9e8sr5qqkc4zjwq5cfqba2pgp3ewaxtnq/tinymce/5/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+    <script>
+      tinymce.init({
+        selector: ".editor",
+        plugins: "image code media lists link ",
+        menubar: false,
+        statusbar: false,
+        toolbar:
+          "undo redo | bold italic underline | numlist bullist| link image  | media  | mybutton | code",
+
+        /* enable title field in the Image dialog*/
+        image_title: true,
+        /* enable automatic uploads of images represented by blob or data URIs*/
+        automatic_uploads: true,
+
+        /*
+  URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
+  images_upload_url: 'postAcceptor.php',
+  here we add custom filepicker only to Image dialog
+  */
+
+        file_picker_types: "image",
+        /* and here's our custom image picker*/
+        file_picker_callback: function (cb, value, meta) {
+          var input = document.createElement("input");
+          input.setAttribute("type", "file");
+          input.setAttribute("accept", "image/*");
+
+          /*
+    Note: In modern browsers input[type="file"] is functional without
+    even adding it to the DOM, but that might not be the case in some older
+    or quirky browsers like IE, so you might want to add it to the DOM
+    just in case, and visually hide it. And do not forget do remove it
+    once you do not need it anymore.
+  */
+
+          input.onchange = function () {
+            var file = this.files[0];
+
+            var reader = new FileReader();
+            reader.onload = function () {
+              /*
+        Note: Now we need to register the blob in TinyMCEs image blob
+        registry. In the next release this part hopefully won't be
+        necessary, as we are looking to handle it internally.
+      */
+              var id = "blobid" + new Date().getTime();
+              var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+              var base64 = reader.result.split(",")[1];
+              var blobInfo = blobCache.create(id, file, base64);
+              blobCache.add(blobInfo);
+
+              /* call the callback and populate the Title field with the file name */
+              cb(blobInfo.blobUri(), { title: file.name });
+            };
+            reader.readAsDataURL(file);
+          };
+
+          input.click();
+        },
+        content_style:
+          "body { font-family:Helvetica,Arial,sans-serif; font-size:18px }",
+
+        setup: function (editor) {
+          /* Menu items are recreated when the menu is closed and opened, so we need
+     a variable to store the toggle menu item state. */
+          var toggleState = false;
+
+          /* example, adding a toolbar menu button */
+          editor.ui.registry.addMenuButton("mybutton", {
+            text: "Dynamic Variables",
+            fetch: function (callback) {
+              var items = [
+                {
+                  type: "menuitem",
+                  text: "Menu item 1",
+                  onAction: function () {
+                    editor.insertContent(
+                      "&nbsp;<em>You clicked menu item 1!</em>"
+                    );
+                  },
+                },
+
+                {
+                  type: "menuitem",
+                  text: "Menu item 2",
+                  onAction: function () {
+                    editor.insertContent(
+                      "&nbsp;<em>You clicked menu item 2!</em>"
+                    );
+                  },
+                },
+              ];
+              callback(items);
+            },
+          });
+        },
+        content_style:
+          "body { font-family:Helvetica,Arial,sans-serif; font-size:18px }",
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="main-container comtainer-fluid w-100 bg-light">
+      <div
+        class="inner-container py-3 row d-flex justify-content-space-between"
+      >
+        <div class="tab-container nav-container col-3">
+          <ul class="tab-nav py-2 mx-auto">
+            <li class="active">Email Confirmation</li>
+            <li class="">Email Cancellation</li>
+            <li class="">Email Reschedule</li>
+            <li class="">Email Reminder</li>
+            <li class="">Email followup</li>
+          </ul>
+        </div>
+
+        <div class="text-part col-6">
+          <div class="Confirmation active" id="row">
+            <div class="heading-div">
+              <h1 class="heading1">Confirmation Email Subject</h1>
+              <input
+                type="email"
+                class="form-control"
+              
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="text-content">
+              <h1 class="heading1">Confirmation Email Body</h1>
+              <div class="form-group">
+                <form method="post">
+                  <textarea class="editor"></textarea>
+                </form>
+              </div>
+            </div>
+            <div class="btn-div">
+              <button type="button" class="btn btn-danger w-100">Update</button>
+            </div>
+          </div>
+
+          <div class="Confirmation" id="row">
+            <div class="heading-div">
+              <h1 class="heading1">Confirmation Email Subject</h1>
+              <input
+                type="email"
+                class="form-control"
+              
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="text-content">
+              <h1 class="heading1">Confirmation Email Body</h1>
+              <div class="form-group">
+                <form method="post">
+                  <textarea class="editor"></textarea>
+                </form>
+              </div>
+            </div>
+            <div class="btn-div">
+              <button type="button" class="btn btn-danger w-100">Update</button>
+            </div>
+          </div>
+
+          <div class="Confirmation" id="row">
+            <div class="heading-div">
+              <h1 class="heading1">Confirmation Email Subject</h1>
+              <input
+                type="email"
+                class="form-control"
+              
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="text-content">
+              <h1 class="heading1">Confirmation Email Body</h1>
+              <div class="form-group">
+                <form method="post">
+                  <textarea id="editor"></textarea>
+                </form>
+              </div>
+              <div class="btn-div">
+                <button type="button" class="btn btn-danger w-100">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="Confirmation" id="row">
+            <div class="heading-div">
+              <h1 class="heading1">
+                Email Reminder <i class="fas fa-plus-circle temp"></i>
+              </h1>
+              <div class="timer">
+             
+                
+              </div>
+            </div>
+            <div class="text-content">
+              <h1 class="heading1">Confirmation Email Body</h1>
+              <div class="form-group">
+                <form method="post">
+                  <textarea></textarea>
+                </form>
+              </div>
+            </div>
+            <div class="btn-div">
+              <button type="button" class="btn btn-danger w-100">
+                Update Email Details
+              </button>
+            </div>
+          </div>
+
+          <div class="Confirmation" id="row">
+            <div class="heading-div">
+              <h1 class="heading1">
+                Email Reminder <i class="fas fa-plus-circle"></i>
+              </h1>
+              <div class="timer">
+                <div
+                  class="
+                    time
+                    w-100
+                    d-flex
+                    justify-content-space-between
+                    align-items-center
+                  "
+                >
+                  <div class="timeCut">
+                    <input
+                      type="email"
+                      class="form-control col-2 mr-2"
+                      value="1"
+                     
+                      aria-describedby="emailHelp"
+                    />
+                    <select
+                      class="form-control col-7"
+                      id="exampleFormControlSelect1"
+                    >
+                      <option>Hour(s) Before</option>
+                      <option>Day(s) Before</option>
+                      <option>Minute(s) Before</option>
+                    </select>
+                    <span class="px-3" onclick="time__btn()"
+                      ><i class="far fa-trash-alt"></i
+                    ></span>
+                  </div>
+
+                  <div class="timerCut">
+                    <input
+                      type="email"
+                      class="form-control col-2 mr-2"
+                      value="1"
+                   
+                      aria-describedby="emailHelp"
+                    />
+                    <select
+                      class="form-control col-7"
+                      id="exampleFormControlSelect1"
+                    >
+                      <option>Hour(s) Before</option>
+                      <option>Day(s) Before</option>
+                      <option>Minute(s) Before</option>
+                    </select>
+                    <span class="px-3" onclick="time_Btn()"
+                      ><i class="far fa-trash-alt"></i
+                    ></span>
+                  </div>
+                </div>
+                <div class="timer_cut">
+                  <input
+                    type="email"
+                    class="form-control col-1 mr-2"
+                    value="1"
+                  
+                    aria-describedby="emailHelp"
+                  />
+                  <select
+                    class="form-control col-4"
+                    id="exampleFormControlSelect1"
+                  >
+                    <option>Hour(s) Before</option>
+                    <option>Day(s) Before</option>
+                    <option>Minute(s) Before</option>
+                  </select>
+                  <span class="px-3" onclick="timeBtn()"
+                    ><i class="far fa-trash-alt"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <div class="text-content">
+              <h1 class="heading1">Confirmation Email Body</h1>
+              <div class="form-group">
+                <form method="post">
+                  <textarea ></textarea>
+                </form>
+              </div>
+            </div>
+
+            <div class="btn-div">
+              <button type="button" class="btn btn-danger w-100">
+                Update Email Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tags col-3">
+          <div class="inner-tags">
+            <h1 class="heading1">Tags</h1>
+            <p class="para">
+              For Example: Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Animi, adipisci vitae. Doloribus maiores dolorem, numquam
+              alias odit cupiditate voluptatem accusamus molestias reiciendis
+              obcaecati eligendi unde, atque praesentium quibusdam repellat
+              magni.
+            </p>
+
+            <h5 class="heading5">Buyer Name <span>{{name}}</span></h5>
+            <h5 class="heading5">Buyer Email <span>{{email}}</span></h5>
+            <h5 class="heading5">Product <span>{{product_name}}</span></h5>
+            <h5 class="heading5">Price <span>{{price}}</span></h5>
+            <h5 class="heading5">Meeting Duration <span>{{duration}}</span></h5>
+            <h5 class="heading5">Meeting Date <span>{{date}}</span></h5>
+            <h5 class="heading5">Meeting Slot <span>{{slot}}</span></h5>
+            <h5 class="heading5">
+              User Timezone <span>{{user_timezone}}</span>
+            </h5>
+            <h5 class="heading5">Seller Name <span>{{seller_name}}</span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
+
+<!-- <div class="form-group">
+  <label for="exampleInputEmail1">Confirmation Email Body</label>
+  <form method="post">
+    <textarea id="editor"></textarea>
+  </form>
+</div> -->
+
+<!-- <div class="col-4 text-center" id="swtch1">
+  <label class="toggle">
+    <span class="onoff" id="stats">OFF</span>
+    <input type="checkbox" />
+    <span class="slider round"></span>
+  </label>
+</div> -->
