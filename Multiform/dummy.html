@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+  <title>Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+<link rel="stylesheet" href="style.css">
+
+
+<body>
+
+<form id="regForm">
+  <div class="tab">
+  <!-- One "tab" for each step in the form: -->
+  <section>
+    <div class="tabs tabs-style-line">
+      <nav>
+        <ul>
+          <li class="tab-current" ><a href="#section-line-1"><img src="email.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Enter Emails</span></a></li>
+          <li ><a href="#section-line-2"><img src="appointment.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Choose Event Type</span></a></li>
+          <li><a href="#section-line-3"><img src="form.svg" style="height: 30px; width: 30px; padding-right: 8px;"><span>You are Done</span></a></li>
+         
+         
+        </ul>
+      </nav>
+      <div class="para">
+        Enter email adresses for the new users below and they will recieve invitation. 
+      </div>
+      <div class="area">
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+      </div>
+    </div><!-- /tabs -->
+  </section>
+  
+</div>
+
+  <div class="tab">
+    
+    <section>
+      <div class="tabs tabs-style-line">
+        <nav>
+          <ul>
+            <li ><a href="#section-line-1"><img src="email.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Enter Emails</span></a></li>
+            <li class="tab-current"><a href="#section-line-2"><img src="appointment.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Choose Event Type</span></a></li>
+            <li><a href="#section-line-3"><img src="form.svg" style="height: 30px; width: 30px; padding-right: 8px;"><span>You are Done</span></a></li>
+            
+           
+          </ul>
+        </nav>
+        <div> <h2>Default Event types for your users</h2></div>
+        <div class="main">
+          <div>qwerty@keyboard.com</div>
+          <div class="options">
+            <div class="j"></div>
+            <div class="hate">+ Event Type</div>
+          </div>
+        </div>
+        <div class="pop">
+          <h2>Select Event</h2>
+          <div class="menu"><h4></h4><h4>Name</h4><h4>Duration</h4></div>
+          <div class="menu"><input type="checkbox" name=""  id="a"><p id="c1">30min Consult</p><p id="c2">30min</p></div>
+          <div class="menu"><input type="checkbox" name=""   id="b"><p id="c3">30min Consult</p><p id="c4">30min</p></div>
+          <div class="menu"><input type="checkbox" name=""  id="c"><p id="c5">30min Consult</p><p id="c6">30min</p></div>
+          <div class="menu"><input type="checkbox" name=""   id="d"><p id="c7">30min Consult</p><p id="c8">30min</p></div>
+          <button class="bt1">Apply</button><button class="bt2">cancel</button>
+        </div>
+        
+      </div><!-- /tabs -->
+    </section>
+    
+
+   
+  </div>
+
+
+  <div class="tab">
+    
+    <section>
+      <div class="tabs tabs-style-line">
+        <nav>
+          <ul>
+            <li ><a href="#section-line-1"><img src="email.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Enter Emails</span></a></li>
+            <li ><a href="#section-line-2"><img src="appointment.svg" style="height: 30px; width: 30px; padding-right: 12px;"><span>Choose Event Type</span></a></li>
+            <li class="tab-current"><a href="#section-line-3"><img src="form.svg" style="height: 30px; width: 30px; padding-right: 8px;"><span>You are Done</span></a></li>
+           
+           
+          </ul>
+        </nav>
+        <h3>Invites Sent</h3>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit fugit est amet sapiente eius provident obcaecati, ea assumenda incidunt ex? Quis, asperiores velit. Iusto voluptatibus id neque consectetur culpa distinctio!34</div>
+        <div><button class="return">Return to Admin Management</button></div>
+        <div><a href="">or add more users</a></div>
+      </div><!-- /tabs -->
+    </section>
+   
+
+    
+   
+    
+    
+
+  </div>
+  
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+ 
+  </div>
+ 
+</form>
+
+
+
+
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 2)) {
+    document.getElementById("nextBtn").innerHTML = "Finish";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("prevBtn").style.display = "none";
+    document.getElementById("nextBtn").style.display= "none";
+  }
+  
+  
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+ 
+
+  // display the correct tab:
+  showTab(currentTab);
+}
+
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+const hap=document.querySelector(".hate")
+console.log(hap)
+hap.addEventListener("click",function(){
+	var hapy=document.querySelector(".pop")
+	hapy.style.display="block";
+
+})
+document.querySelector(".bt1").addEventListener("click",function(){
+	var hapy=document.querySelector(".pop")
+	hapy.style.display="none";
+
+  if (document.getElementById("a").checked == 1){
+    let m=document.getElementById("c1").innerHTML
+    let n=document.getElementById("c2").innerHTML
+    console.log(m)
+     document.querySelector(".j").innerHTML+= `<div>
+  <div>${m}</div>
+  <div>${n}</div>
+</div>` 
+    }  if (document.getElementById("b").checked == 1){
+    let m=document.getElementById("c3").innerHTML
+    let n=document.getElementById("c4").innerHTML
+    console.log(m)
+     document.querySelector(".j").innerHTML+= `<div>
+  <div>${m}</div>
+  <div>${n}</div>
+</div>`  
+    
+    }
+    if (document.getElementById("c").checked == 1){
+    let m=document.getElementById("c5").innerHTML
+    let n=document.getElementById("c6").innerHTML
+    console.log(m)
+     document.querySelector(".j").innerHTML+= `<div>
+  <div>${m}</div>
+  <div>${n}</div>
+</div>`  
+    
+    } if (document.getElementById("d").checked == 1){
+    let m=document.getElementById("c7").innerHTML
+    let n=document.getElementById("c8").innerHTML
+    console.log(m)
+     document.querySelector(".j").innerHTML+= `<div>
+  <div>${m}</div>
+  <div>${n}</div>
+</div>`  
+    
+    }
+  
+
+  });
+  document.querySelector(".bt2").addEventListener("click",function(){
+
+	var hapy=document.querySelector(".pop")
+	hapy.style.display="none";
+  }
+  )
+
+  
+
+
+</script>
+
+</body>
+
+</html>
